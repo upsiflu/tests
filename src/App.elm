@@ -114,6 +114,7 @@ getWord ( FakeApp ( w, c ) ) = w
 type Word
     = Symbolizing Relation
     | Naming Concept
+    | Ambiguity
 
 type Relation
     = More
@@ -248,8 +249,34 @@ Problem: then we have to maintain both a redblack tree  (dict) and an ambi tree 
 
 Yet another option:
 
+We build a tree
 
-    
+
+
+
+FIRST>
+What dow we want to achieve, ideally?
+- preservation of order
+- a/b includes all definitions of a/b (including a'/b'', a'''/b', etc.)
+- The case when the primes are separated is only as 'filters' in an arrangement, or in a multiprototype.
+    This case is the 'horizontal' case, i.e. we have the lexical direction in the y axis?
+
+
+IDEA
+a
+ b
+ b
+  c
+ d
+ b
+  e
+means:
+a b (0) -> SELECT reference to a b (1) | a b (2)
+a b (1) -> INPUT {a b c}
+a b (2) -> INPUT {a b e}
+a b -> {a b (0)} union {a b (1)} union {a b (2)}
+
+So we should introduce the new type type Word =
 
 --}
 

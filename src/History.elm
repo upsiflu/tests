@@ -43,6 +43,10 @@ import Transformation
     State
 
         A state can be of any conceivable type.
+
+
+    Since the stated purpose of History is to provide interchange
+    of transformation stacks, transformations should of course be serializable.
 -}
 
 
@@ -118,7 +122,7 @@ bottom = guard ( not<<isBottom ) ( prev>>bottom )
 
 --------------- HELPERS ---------------
 
-
+        
 guard : ( a -> Bool ) -> ( a -> b ) -> a -> b
 guard prediate change variable =
     if predicate variable then ( change variable ) else variable
